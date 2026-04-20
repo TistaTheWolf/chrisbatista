@@ -20,6 +20,15 @@ export const PageHeader = () => {
   const settings = ['Contact'];
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [anchorElPage, setAnchorElPage] = useState<null | HTMLElement>(null);
+
+  const handleOpenPageMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElPage(event.currentTarget);
+  };
+
+  const handleClosePageMenu = () => {
+    setAnchorElPage(null);
+  };
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -42,27 +51,39 @@ export const PageHeader = () => {
               >
                 <IconButton
                   size="large"
-                  aria-label="account of current user"
+                  aria-label="page menu options"
                   aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  color="inherit"
+                  onClick={handleOpenPageMenu}
                 >
-                  <MenuBook />
+                  <MenuBook sx={{ color: 'white' }} />
                 </IconButton>
-              </Grid>
-              <Grid size={{ xs: 4 }}>
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="page-menu-appbar"
+                  anchorEl={anchorElPage}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElPage)}
+                  onClose={handleClosePageMenu}
+                >
                   {pages.map((page) => (
-                    <Button
-                      key={page}
-                      sx={{ my: 2, color: 'white', display: 'block' }}
-                    >
-                      <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                    <MenuItem key={page} onClick={handleClosePageMenu}>
+                      <Typography sx={{ textAlign: 'center' }}>
                         {page}
                       </Typography>
-                    </Button>
+                    </MenuItem>
                   ))}
-                </Box>
+                </Menu>
+              </Grid>
+              <Grid size={{ xs: 4 }}>
+                <Typography variant="h4">Chris Batista</Typography>
               </Grid>
               <Grid
                 container
@@ -80,7 +101,7 @@ export const PageHeader = () => {
                   </Tooltip>
                   <Menu
                     sx={{ mt: '45px' }}
-                    id="menu-appbar"
+                    id="user-menu-appbar"
                     anchorEl={anchorElUser}
                     anchorOrigin={{
                       vertical: 'top',

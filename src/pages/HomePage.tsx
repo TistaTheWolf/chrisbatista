@@ -1,5 +1,3 @@
-import { PageHeader } from '../components/common';
-
 export const HomePage = () => {
-  return <PageHeader />;
+  return <div> This is the home page</div>;
 };
