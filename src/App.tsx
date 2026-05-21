@@ -1,14 +1,9 @@
 import './App.css';
-import { createTheme, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { PageHeader } from './components/common';
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'light',
-  },
-});
+import { theme } from './theme';
 
 const Home = lazy(() =>
   import('./pages/index').then((module) => ({ default: module.HomePage }))
@@ -19,7 +14,7 @@ const Blog = lazy(() =>
 
 export const App = () => {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <PageHeader />
 
       <BrowserRouter>

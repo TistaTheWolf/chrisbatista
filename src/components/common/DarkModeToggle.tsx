@@ -1,5 +1,4 @@
 import { Switch } from '@mui/material';
-import { useState } from 'react';
 import { DarkMode, LightMode } from '@mui/icons-material';
 
 export const DarkModeToggle = () => {

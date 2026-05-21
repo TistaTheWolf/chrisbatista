@@ -3,7 +3,6 @@ import {
   AppBar,
   Avatar,
   Box,
-  Button,
   Container,
   Grid,
   IconButton,
@@ -14,6 +13,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
+import { DarkModeToggle } from './DarkModeToggle';
 
 export const PageHeader = () => {
   const pages = ['Blog', 'Resume', 'Projects'];
@@ -83,13 +83,14 @@ export const PageHeader = () => {
                 </Menu>
               </Grid>
               <Grid size={{ xs: 4 }}>
-                <Typography variant="h4">Chris Batista</Typography>
+                <Typography variant="h3">Chris Batista</Typography>
               </Grid>
               <Grid
                 container
                 size={{ xs: 4 }}
                 sx={{ justifyContent: 'flex-end' }}
               >
+                <DarkModeToggle />
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
