@@ -1,8 +1,11 @@
 import { Box, Divider, Grid } from '@mui/material';
 import { useState } from 'react';
+import Markdown from 'react-markdown';
 
 export const BlogPage = () => {
   const [selectedPost, setSelectedPost] = useState<number | null>(null);
+
+  const markdown = '# Hi, *Pluto*!';
 
   const blogPosts = [
     {
@@ -75,6 +78,7 @@ export const BlogPage = () => {
               </Grid>
             </Box>
           )}
+          <Markdown>{markdown}</Markdown>
         </Grid>
       </Grid>
     </Box>
